@@ -1,4 +1,3 @@
-// shared/SimpleDEXABI.js
 const simpleDEXABI = [
     {
         "inputs": [

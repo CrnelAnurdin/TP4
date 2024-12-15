@@ -86,7 +86,7 @@ function App() {
         try {
             const amountA = ethers.utils.parseUnits(tokenAAmount, 18);
             const amountB = ethers.utils.parseUnits(tokenBAmount, 18);
-            const tx = await contract.initializePool(amountA, amountB, { gasLimit: 1000000 });
+            const tx = await contract.initializePool(amountA, amountB);
             await tx.wait();
             console.log("Pool inicializado exitosamente", tx);
             await fetchLiquidityData();
@@ -100,7 +100,9 @@ function App() {
     const removeLiquidity = async () => {
         try {
             console.log("Retirar liquidez");
-            // Implement remove liquidity logic here
+            const amountA = ethers.utils.parseUnits(tokenAAmount, 18);
+            const amountB = ethers.utils.parseUnits(tokenBAmount, 18);
+            const tx = await contract.removeLiquidity(amountA, amountB);
             resetInputs();
         } catch (error) {
             console.error("Error al retirar liquidez:", error);
@@ -111,7 +113,9 @@ function App() {
     const addLiquidity = async () => {
         try {
             console.log("Agregar liquidez");
-            // Implement add liquidity logic here
+            const amountA = ethers.utils.parseUnits(tokenAAmount, 18);
+            const amountB = ethers.utils.parseUnits(tokenBAmount, 18);
+            const tx = await contract.addLiquidity(amountA, amountB);
             resetInputs();
         } catch (error) {
             console.error("Error al agregar liquidez:", error);
